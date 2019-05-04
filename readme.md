@@ -1,4 +1,4 @@
-# ShibaAvenger
+# SA(ShibaAvenger)
 
 ## 简介
 
@@ -14,9 +14,9 @@
 >   - 生成ER图
 >   - 生成后台服务代码(for java)
 >   - 生成接口文档
-> - 第三阶段:
+> - 第二阶段:
 >   - 生成前端代码(for react:  form  +  table 模式)
-> - 第四阶段
+> - 第三阶段
 >   - 工程打包(for docker)
 >   - 一键部署与热更新
 
