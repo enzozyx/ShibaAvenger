@@ -1,0 +1,18 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    druid:
+      filter:
+        stat:
+          log-slow-sql: true
+      username: postgres
+      password: HUAJIEbim@123456
+      url: jdbc:postgresql://120.27.226.246:5432/enzo?useunicode=true&characterencoding=utf-8&zerodatetimebehavior=converttonull
+debug: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.enzo.sa.*.dao: debug
