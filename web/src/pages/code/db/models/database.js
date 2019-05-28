@@ -118,6 +118,66 @@ export default {
                     size: 10
                 }
             });
+        },
+        *addDatabase({ payload: { name, alias, server_ip, server_port, category, location }}, {call, select, put}){
+            yield call();
+            yield put({
+                tyep: 'loadSchemas'
+            });
+        },
+        *updateDatabase({ payload: {id, name, alias, server_ip, server_port, category, location } }, {call, put}){
+            yield call();
+            yield put({
+                tyep: 'loadSchemas'
+            });
+        },
+        *deleteDatabase({ payload: { id } }, {call, put, select}){
+            yield call();
+            yield put({
+                type: 'loadSchemas'
+            });
+        },
+        *addSchema({ payload: { name, alias, db_id } }, { call, select, put }){
+            yield call();
+            yield put({
+                type: 'loadSchemas'
+            });
+        },
+        *updateSchema({ payload: {id, name, alias, db_id } }, { call, select, put }){
+            yield call();
+            yield put({
+                type: 'loadSchemas'
+            });
+        },
+        *deleteSchema({ payload: { id } }, { call, select, put }){
+            yield call();
+            yield put({
+                type: 'loadSchemas'
+            });
+        },
+        *addRelation({ payload: { name, alias, database_id, schema_id, comment } }, { call, select, put }){
+            yield call();
+            yield put({
+                type: 'querySchemaTables',
+                payload: { database_id, schema_id, index: 1, size: 10 }
+            });
+        },
+        *updateRelation({ payload: { id, name, alias, database_id, schema_id, comment }}, { call, select, put }){
+            yield call();
+            yield put({
+                type: 'querySchemaTables',
+                payload: { database_id, schema_id, index: 1, size: 10 }
+            });
+        },
+        *deleteRelation({payload: { id} }, { call, select, put }){
+            yield call();
+            const { database_id, schema_id } = yield select(state => { 
+                return { database_id: state.currentDatabase, schema_id: state.currentSchema };
+            });
+            yield put({
+                type: 'querySchemaTables',
+                payload: { database_id, schema_id, index: 1, size: 10 }
+            });
         }
    },
    subscriptions: {

@@ -35,6 +35,9 @@ public interface IDatabaseDao {
     @Select("select id, name, alias, server_ip, server_port, category, location, lasted from shiba.t_database where id = #{id}")
     Database selectDetail(@Param("id") Integer id);
 
+    @Delete("DELETE FROM shiba.t_database WHERE id = #{id}")
+    Integer delete(@Param("id") Integer id);
+
     @UpdateProvider(type = UpdateBuilder.class, method = "updatePropById")
     int updateByID(Database data);
 
@@ -44,15 +47,15 @@ public interface IDatabaseDao {
                 SQL sql = new SQL().UPDATE("shiba.t_database").SET("lasted=now()");
                 if(data.getName() != null)
                     sql.SET("name = #{name}");
-                if(data.getName() != null)
+                if(data.getAlias() != null)
                     sql.SET("alias = #{alias}");
-                if(data.getName() != null)
+                if(data.getCategory() != null)
                     sql.SET("category = #{category}");
-                if(data.getName() != null)
+                if(data.getServerIp() != null)
                     sql.SET("server_ip = #{serverIp}");
-                if(data.getName() != null)
+                if(data.getServerPort() != null)
                     sql.SET("server_port = #{serverPort}");
-                if(data.getName() != null)
+                if(data.getLocation() != null)
                     sql.SET("location = #{location}");
                 sql.WHERE("id = #{id}");
                 return sql.toString();

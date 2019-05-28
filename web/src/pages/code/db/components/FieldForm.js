@@ -3,7 +3,7 @@ import { Form, Input, Select, Button } from 'antd';
 
 
 export default Form.create()((props) => {
-    const { record, onSubmit, onCancel, form: { getFieldDecorator, validateFields, getFieldsValue } } = props;
+    const { record, onSubmit, onCancel, form: { getFieldDecorator, validateFields, getFieldsValue, getFieldValue} } = props;
 
     const fieldTypeDict = [
         { label: '整型', value: 1 },
@@ -66,6 +66,13 @@ export default Form.create()((props) => {
                         <Select key='type'  >
                             {fieldTypeDict.map(type => ( <Select.Option value={type.value}>{type.label}</Select.Option> ))}                           
                         </Select>
+                    )}
+            </Form.Item>
+            <Form.Item {...formItemLayout} label='长度' style={ {display: getFieldValue('type') === fieldTypeDict[1].value? 'block': 'none'} }>
+                    {getFieldDecorator('length', {
+                        initialValue: 32
+                    })(
+                        <Input key='length' type='number'/>
                     )}
             </Form.Item>
             <Form.Item {...formItemLayout} label={(<span>注释</span>)}>
